@@ -1,1 +1,1 @@
-# My 1st Tech Degree Project
+# 1st Tech Degree Project
