@@ -3,53 +3,105 @@ Treehouse Techdegree:
 FSJS project 1 - A Random Quote Generator
 ******************************************/
 
-// Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
-
-
-/*** 
-  Create the array of quote objects and name it `quotes`.
-  Add at least five quote objects to the `quotes` array.
-  Give each quote object a `quote` and `source` property.
-
-  Recommended: 
-    - Add at least one `year` and/or `citation` property to at least one 
-      quote object.
-***/
 
 
 
+// This array of objects contain the quotes 
 
-/***
-  Create the `getRandomQuote` function to:
-   - generate a random number 
-   - use the random number to `return` a random quote object from the 
-     `quotes` array.
-***/
+let quotes = [
+    {
+        qoute: 'There is only one way to avoid criticism: do nothing, say nothing, and be nothing.',
+        source: 'Aristotle',
+        tag: 'Motivational'
+    },
+    {
+        qoute: 'Life is the art of drawing without an eraser.',
+        source: 'John W. Gardner',
+        citation: 'Twitter',
+        year: 1985,
+        tag: 'Experience'
+        
+    },
+    {
+        qoute: 'There is only one corner of the universe you can be certain of improving, and that\'s your own self.',
+        source: 'Aldous Huxley',
+        citation: 'Brainy Qoute',
+        year: 1992,
+        tag: 'Inspiration'
+    },
+    {
+        qoute: 'Only those who will risk going too far can possibly find out how far one can go.',
+        source: 'T. S. Eliot',
+        tag: 'Life lesson'
+        
+    },
+    {
+        qoute: 'Behind every great man is a woman rolling her eyes.',
+        source: 'Jim Carrey',
+        citation: 'Brainy Qoute',
+        tag: 'Funny'
+    }
+
+]
 
 
 
-
-/***
-  Create the `printQuote` function to: 
-   - call the `getRandomQuote` function and assign it to a variable.
-   - use the properties of the quote object stored in the variable to 
-     create your HTML string.
-   - use conditionals to make sure the optional properties exist before 
-     they are added to the HTML string.
-   - set the `innerHTML` of the `quote-box` div to the HTML string. 
-***/
+/* This function will generate random numbers between 1 and 5, and use the random swquece to pull one quote from the quotes array at a time whenever the page is refreshed.
+*/
+function getRandomQuote( ) {
+        let random_quote = quotes[Math.floor(Math.random() * quotes.length)];
+        return random_quote;
+}
 
 
+ 
+// This function will print the random quotes on the page evetytime the page is refreshed
+function printQuote() {
+        let random = getRandomQuote();
+    
+    if ( random.hasOwnProperty('year') && random.hasOwnProperty('citation')) {
+        document.getElementsByClassName("quote")[0].innerHTML =  random.qoute;
+        document.getElementsByClassName("source2")[0].innerHTML += random.source;
+        document.getElementsByClassName("year")[0].innerHTML += random.year;
+        document.getElementsByClassName("citation")[0].innerHTML += ', ' + random.citation + ',';
+        document.getElementsByClassName("tags")[0].innerHTML += ': ' + random.tag;
+    } else {
+        document.getElementsByClassName("quote")[0].innerHTML = random.qoute;
+        document.getElementsByClassName("source2")[0].innerHTML += random.source; 
+        document.getElementsByClassName("tags")[0].innerHTML += ': ' + random.tag;
+    }
+}
+printQuote();
 
 
-/***
-  When the "Show another quote" button is clicked, the event listener 
-  below will be triggered, and it will call, or "invoke", the `printQuote` 
-  function. So do not make any changes to the line of code below this 
-  comment.
-***/
 
+// This function will change the backroung color eveytime the page is refreshed or 'show another quote' buttom is clicked
+function backgroundColor() {
+    var color;
+    var x = Math.floor(Math.random() * 256);
+    var y = Math.floor(Math.random() * 256);
+    var z = Math.floor(Math.random() * 256);
+        Color = "rgb("; 
+        Color += x + ",";
+        Color += y + ",";
+        Color += z;
+        Color += ")";
+    document.body.style.background = Color;
+    }
+backgroundColor();
+
+
+
+// This will apply time interval between qoutes
+var intervalID = window.setInterval(printQuote, 5000);
+var intervalID = window.setInterval(backgroundColor, 5000);
+
+
+
+/* Whenever the show another quote is clicked the event listner will call the printQuote to chnaged the coat and backgroundColor to randomly chage the background color 
+*/
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+document.getElementById('loadQuote').addEventListener("click", backgroundColor, false);
 
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
