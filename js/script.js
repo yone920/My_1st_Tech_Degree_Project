@@ -2,7 +2,7 @@
 Treehouse Techdegree:
 FSJS project 1 - A Random Quote Generator
 ******************************************/
-
+let message = '';
 
 
 
@@ -38,11 +38,11 @@ let quotes = [
     {
         qoute: 'Behind every great man is a woman rolling her eyes.',
         source: 'Jim Carrey',
-        citation: 'Brainy Qoute',
         tag: 'Funny'
     }
 
 ]
+
 
 
 
@@ -56,21 +56,24 @@ function getRandomQuote( ) {
 
  
 // This function will print the random quotes on the page evetytime the page is refreshed
-function printQuote() {
-        let random = getRandomQuote();
+
+
+    let random = getRandomQuote();
+    message += '<p class="quote">' + random.qoute + '</p>';
+    message += '<p class="source">' + random.source;
+        
+        if(quotes.hasOwnProperty('citation')){
+    message += '<span class="citation">' + random.citation + '</span>';
+} 
+    message += '</p>';
     
-    if ( random.hasOwnProperty('year') && random.hasOwnProperty('citation')) {
-        document.getElementsByClassName("quote")[0].innerHTML =  random.qoute;
-        document.getElementsByClassName("source2")[0].innerHTML += random.source;
-        document.getElementsByClassName("year")[0].innerHTML += random.year;
-        document.getElementsByClassName("citation")[0].innerHTML += ', ' + random.citation + ',';
-        document.getElementsByClassName("tags")[0].innerHTML += ': ' + random.tag;
-    } else {
-        document.getElementsByClassName("quote")[0].innerHTML = random.qoute;
-        document.getElementsByClassName("source2")[0].innerHTML += random.source; 
-        document.getElementsByClassName("tags")[0].innerHTML += ': ' + random.tag;
-    }
+
+function printQuote() {
+    let html = document.getElementById('quote-box');
+    html.innerHTML = message; 
+ 
 }
+
 printQuote();
 
 
@@ -100,7 +103,7 @@ var intervalID = window.setInterval(backgroundColor, 5000);
 
 /* Whenever the show another quote is clicked the event listner will call the printQuote to chnaged the coat and backgroundColor to randomly chage the background color 
 */
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+//document.getElementById('loadQuote').addEventListener("click", printHtml, false);
 document.getElementById('loadQuote').addEventListener("click", backgroundColor, false);
 
 
