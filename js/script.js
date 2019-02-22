@@ -44,6 +44,7 @@ let quotes = [
 ]
 
 
+
 /* This function will generate random numbers between 1 and 5, and use the random swquece to pull one quote from the quotes array at a time whenever the page is refreshed.
 */
 function getRandomQuote( ) {
@@ -54,7 +55,6 @@ function getRandomQuote( ) {
 
  
 // This function will print the random quotes on the page evetytime the page is refreshed
-
 function printQuote() {
     let html = document.getElementById('quote-box');
     html.innerHTML = message; 
@@ -74,8 +74,14 @@ function printQuote() {
     
     return message;
 }
-    
-    let random = getRandomQuote();
+   
+
+
+
+
+// This concatenation is added out side of the function because reloading the page is not changing the random quotes if it is inside the function.
+   
+let random = getRandomQuote();
     message = '<p class="quote">' + random.qoute + '</p>';
     message += '<p class="source">' + random.source ;
         
@@ -109,16 +115,16 @@ backgroundColor();
 
 
 
-// This will apply time interval between qoutes
+// This will apply time interval between qoutes and color change
 var intervalID = window.setInterval(printQuote, 5000);
 var intervalID = window.setInterval(backgroundColor, 5000);
 
 
 
-/* Whenever the show another quote is clicked the event listner will call the printQuote to chnaged the coat and backgroundColor to randomly chage the background color 
-*/
+// Whenever the show another quote is clicked the event listner will call the printQuote to chnaged the coat and backgroundColor to randomly chage the background color 
+
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 document.getElementById('loadQuote').addEventListener("click", backgroundColor, false);
 
 
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
+
