@@ -44,8 +44,6 @@ let quotes = [
 ]
 
 
-
-
 /* This function will generate random numbers between 1 and 5, and use the random swquece to pull one quote from the quotes array at a time whenever the page is refreshed.
 */
 function getRandomQuote( ) {
@@ -57,22 +55,38 @@ function getRandomQuote( ) {
  
 // This function will print the random quotes on the page evetytime the page is refreshed
 
-
-    let random = getRandomQuote();
-    message += '<p class="quote">' + random.qoute + '</p>';
-    message += '<p class="source">' + random.source;
-        
-        if(quotes.hasOwnProperty('citation')){
-    message += '<span class="citation">' + random.citation + '</span>';
-} 
-    message += '</p>';
-    
-
 function printQuote() {
     let html = document.getElementById('quote-box');
     html.innerHTML = message; 
- 
+    
+    let random = getRandomQuote();
+    message = '<p class="quote">' + random.qoute + '</p>';
+    message += '<p class="source">' + random.source ;
+        
+        if(random.citation){
+    message += '<span class="citation">' + ', ' + random.citation + ', ' + '</span>';
+        } 
+        if (random.year) {
+    message += '<span class="year">' + random.year + '</span>';
+        }
+    message +=  '</p>';
+    message += '<p class="tags">' + 'Tag: ' +  random.tag + '</p>';
+    
+    return message;
 }
+    
+    let random = getRandomQuote();
+    message = '<p class="quote">' + random.qoute + '</p>';
+    message += '<p class="source">' + random.source ;
+        
+        if(random.citation){
+    message += '<span class="citation">' + ', ' + random.citation + ', ' + '</span>';
+        } 
+        if (random.year) {
+    message += '<span class="year">' + random.year + '</span>';
+        }
+    message +=  '</p>';
+    message += '<p class="tags">' + 'Tag: ' +  random.tag + '</p>';
 
 printQuote();
 
@@ -103,7 +117,7 @@ var intervalID = window.setInterval(backgroundColor, 5000);
 
 /* Whenever the show another quote is clicked the event listner will call the printQuote to chnaged the coat and backgroundColor to randomly chage the background color 
 */
-//document.getElementById('loadQuote').addEventListener("click", printHtml, false);
+document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 document.getElementById('loadQuote').addEventListener("click", backgroundColor, false);
 
 
