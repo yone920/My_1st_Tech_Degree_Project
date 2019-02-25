@@ -138,15 +138,15 @@ backgroundColor();
 
 
 // This will apply time interval between qoutes and color change
-//var intervalID = window.setInterval(printQuote, 5000);
-//var intervalID = window.setInterval(backgroundColor, 5000);
+var intervalID = window.setInterval(printQuote, 5000);
+var intervalID = window.setInterval(backgroundColor, 5000);
 
 
 
 // Whenever the show another quote is clicked the event listner will call the printQuote to chnaged the coat and backgroundColor to randomly chage the background color 
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-//document.getElementById('loadQuote').addEventListener("click", backgroundColor, false);
+document.getElementById('loadQuote').addEventListener("click", backgroundColor, false);
 
 
 
