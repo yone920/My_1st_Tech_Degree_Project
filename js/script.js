@@ -40,8 +40,11 @@ let quotes = [
 
 ]
 
-
-// This function will generate random numbers between 1 and 5, and use the random sequece to pull one quote from the quotes array at a time whenever the page is refreshed. It will also shuffle the qoutes so that no qoute is repeated before initiating another new loop. (I have received help from 'Jack Bashford' in stack overflow to be able to shuffle the quote with out reputation.)
+/*
+This function will generate random numbers between 1 and 5, and use the random sequece to pull one quote from the quotes array at a 
+time whenever the page is refreshed. It will also shuffle the qoutes so that no qoute is repeated before initiating another new loop. 
+(I have received help from 'Jack Bashford' in stack overflow to be able to shuffle the quote with out reputation.)
+*/
 var counter = 0;
 function getRandomQuote() {
     counter++;
